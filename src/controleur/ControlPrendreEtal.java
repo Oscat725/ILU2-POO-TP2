@@ -13,18 +13,18 @@ public class ControlPrendreEtal {
 	}
 
 	public boolean resteEtals() {
-		//TODO a completer, attention le retour ne dit pas etre false :-)
-		return false;
+		boolean etalDisponible = village.rechercherEtalVide()
+;		return etalDisponible;
 	}
 
 	public int prendreEtal(String nomVendeur, String produit, int nbProduit) {
-		//TODO a completer
 		int numeroEtal = -1;
-		return numeroEtal;
+		numeroEtal =village.installerVendeur(village.trouverHabitant(nomVendeur), produit, nbProduit);
+		return numeroEtal+1;
 	}
 
 	public boolean verifierIdentite(String nomVendeur) {
-		//TODO a completer, attention le retour ne dit pas etre false :-)
-		return false;
+		boolean nomVendeurConnu= controlVerifierIdentite.verifierIdentite(nomVendeur);
+		return nomVendeurConnu;
 	}
 }
