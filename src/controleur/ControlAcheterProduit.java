@@ -17,6 +17,7 @@ public class ControlAcheterProduit {
 		this.controlTrouverEtalVendeur = controlTrouverEtalVendeur;
 	}
 
+	@SuppressWarnings("null")
 	public String[] chercherVendeurs(String produit) {
 		String[] vendeurs = null;
 		Gaulois[] gaulois = village.rechercherVendeursProduit(produit);
@@ -40,6 +41,16 @@ public class ControlAcheterProduit {
 	public int quantiteProduit(String vendeur) {
 		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(vendeur);
 		return etal.getQuantite();
+	}
+
+	public int acheterProduit(String string, int i) {
+		Gaulois gaulois = village.trouverHabitant(string);
+		Etal etal= village.rechercherEtal(gaulois);
+		if (etal.getQuantite()<i) {
+			etal.acheterProduit(i);
+			return i;
+		}
+		return 0;
 	}
 
 }
