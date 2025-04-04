@@ -1,11 +1,13 @@
 package controleur;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
+import personnages.Gaulois;
 import villagegaulois.Village;
 
 class ControlAfficherVillageTest {
@@ -31,18 +33,35 @@ class ControlAfficherVillageTest {
 	@Test
 	void testDonnerNomsVillageois() {
 		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
-		assertNull(controlAfficherVillage.donnerNomsVillageois());
+		String[] chef =controlAfficherVillage.donnerNomsVillageois();
+		assertSame(abrarcourcix, village.trouverHabitant(chef[0]));
 		
+		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
+		
+		controlEmmenager.ajouterGaulois("Asterix", 10);
+		String[] gauloishabitans =controlAfficherVillage.donnerNomsVillageois();
+		assertEquals("Asterix", gauloishabitans[1]);
+		
+		controlEmmenager.ajouterDruide("g", 10,10, 10);
+		String[] gdruidehabitants =controlAfficherVillage.donnerNomsVillageois();
+		System.out.println(gdruidehabitants[2]);
+		assertEquals("le druide g", gdruidehabitants[2]);
+		assertNotEquals("faux", gdruidehabitants[2]);
 	}
 
 	@Test
 	void testDonnerNomVillage() {
-		fail("Not yet implemented");
+		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
+		String nomVillage = controlAfficherVillage.donnerNomVillage();
+		assertEquals("le village des irréductibles", nomVillage);
+		assertNotEquals("Faux", nomVillage);
 	}
 
 	@Test
 	void testDonnerNbEtals() {
-		fail("Not yet implemented");
+		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
+		int nbEtal = controlAfficherVillage.donnerNbEtals();
+		assertEquals(5, nbEtal);
 	}
 
 }

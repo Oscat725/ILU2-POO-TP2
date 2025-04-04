@@ -18,6 +18,10 @@ public class BoundaryAfficherVillage {
 		System.out.println("Ce village possède un joli marché avec "
 				+ controlAfficherVillage.donnerNbEtals()
 				+ " étals mis à la disposition des villageois afin qu'ils puissent vendre leurs produits.");
+		afficheDonnees(donneesVillage);
+	}
+
+	private void afficheDonnees(String[] donneesVillage) {
 		if (donneesVillage.length > 1) {
 			System.out.println("En plus du chef, il y a "
 					+ (donneesVillage.length - 1) + " habitants : ");

@@ -18,27 +18,31 @@ public class BoundaryEmmenager {
 			question.append("Êtes-vous :\n");
 			question.append("1 - un druide.\n");
 			question.append("2 - un gaulois.\n");
-			int choixUtilisateur = -1;
-			do {
-				choixUtilisateur = Clavier.entrerEntier(question.toString());
-				switch (choixUtilisateur) {
-				case 1:
-					emmenagerDruide(nomVisiteur);
-					break;
-
-				case 2:
-					System.out.println("Bienvenue villageois "+nomVisiteur);
-					int force =Clavier.entrerEntier("Quelle est votre force?");
-					controlEmmenager.ajouterGaulois(nomVisiteur, force);
-					break;
-
-				default:
-					System.out
-							.println("Vous devez choisir le chiffre 1 ou 2 !");
-					break;
-				}
-			} while (choixUtilisateur != 1 && choixUtilisateur != 2);
+			druideChoix(nomVisiteur, question);
 		}
+	}
+
+	private void druideChoix(String nomVisiteur, StringBuilder question) {
+		int choixUtilisateur = -1;
+		do {
+			choixUtilisateur = Clavier.entrerEntier(question.toString());
+			switch (choixUtilisateur) {
+			case 1:
+				emmenagerDruide(nomVisiteur);
+				break;
+
+			case 2:
+				System.out.println("Bienvenue villageois "+nomVisiteur);
+				int force =Clavier.entrerEntier("Quelle est votre force?");
+				controlEmmenager.ajouterGaulois(nomVisiteur, force);
+				break;
+
+			default:
+				System.out
+						.println("Vous devez choisir le chiffre 1 ou 2 !");
+				break;
+			}
+		} while (choixUtilisateur != 1 && choixUtilisateur != 2);
 	}
 
 	private void emmenagerDruide(String nomVisiteur) {

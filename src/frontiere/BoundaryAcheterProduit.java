@@ -10,7 +10,7 @@ public class BoundaryAcheterProduit {
 	}
 
 	public void acheterProduit(String nomAcheteur) {
-		Boolean acheteruApartient = controlAcheterProduit.acheteurApartient(nomAcheteur);
+		boolean acheteruApartient = controlAcheterProduit.acheteurApartient(nomAcheteur);
 		if (!acheteruApartient) {
 			System.out.println("Je suis désolée Panoramix mais il"
 					+ " faut être un habitant de notre "
@@ -18,7 +18,7 @@ public class BoundaryAcheterProduit {
 			return;
 		}
 		String produit = Clavier.entrerChaine("Quel produit voulez-vous acheter ?");
-		Boolean produitMarche = controlAcheterProduit.produitMarche(produit);
+		boolean produitMarche = controlAcheterProduit.produitMarche(produit);
 		if (!produitMarche) {
 			
 		}

@@ -33,6 +33,7 @@ public class ControlLibererEtal {
 		if (etal != null) {
 			String[] donnesVentes = etal.etatEtal();
 			donneesEtal=donnesVentes;
+			etal.libererEtal();
 			return donneesEtal;
 		}
 		return null;

@@ -21,9 +21,12 @@ public class ControlAcheterProduit {
 	public String[] chercherVendeurs(String produit) {
 		String[] vendeurs = null;
 		Gaulois[] gaulois = village.rechercherVendeursProduit(produit);
-		for (int i = 0; i < gaulois.length; i++) {
-			Gaulois gaulois2 = gaulois[i];
-			vendeurs[i]=gaulois2.getNom();
+		if (gaulois != null) {
+			vendeurs = new String[gaulois.length];
+			for (int i = 0; i < gaulois.length; i++) {
+				Gaulois gaulois2 = gaulois[i];
+				vendeurs[i]=gaulois2.getNom();
+			}
 		}
 		return vendeurs;
 	}
@@ -43,12 +46,11 @@ public class ControlAcheterProduit {
 		return etal.getQuantite();
 	}
 
-	public int acheterProduit(String string, int i) {
-		Gaulois gaulois = village.trouverHabitant(string);
-		Etal etal= village.rechercherEtal(gaulois);
-		if (etal.getQuantite()<i) {
-			etal.acheterProduit(i);
-			return i;
+	public int acheterProduit(String vendeur, int quantite) {
+		Gaulois gaulois = village.trouverHabitant(vendeur);
+		if (gaulois != null) {
+			Etal etal= village.rechercherEtal(gaulois);
+			return etal.acheterProduit(quantite);
 		}
 		return 0;
 	}
